@@ -22,4 +22,14 @@ public class FoodItemService {
     public List<FoodItemModel> listar() {
         return foodItemRepository.findAll();
     }
+
+    public FoodItemModel editar(FoodItemModel foodItemEditado, Long id) {
+        if (foodItemRepository.existsById(id)) {
+            foodItemEditado.setId(id);
+            foodItemRepository.save(foodItemEditado);
+            return foodItemEditado;
+        } else {
+            return null;
+        }
+    }
 }
