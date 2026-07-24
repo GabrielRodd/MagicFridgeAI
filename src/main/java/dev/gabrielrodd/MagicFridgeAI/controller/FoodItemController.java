@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/food")
@@ -35,6 +36,20 @@ public class FoodItemController {
                 .body(listaFoodItemModel);
     }
 
+    //GET POR ID
+    @GetMapping("/mostrar/{id}")
+    public ResponseEntity<Object> mostrarPorID(@PathVariable Long id) {
+        FoodItemModel foodItemID = foodItemService.listarPorId(id);
+        if (foodItemID != null) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(foodItemID);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Food ID: " + id + " nao existe.");
+
+        }
+
+    }
 
     //UPDATE
     @PutMapping("/editar/{id}")
