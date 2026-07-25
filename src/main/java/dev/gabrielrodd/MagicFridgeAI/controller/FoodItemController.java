@@ -63,10 +63,17 @@ public class FoodItemController {
                     .body("Food nao encontrada");
         }
     }
-}
-
-
 
     //DELETE
-
-
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        FoodItemModel foodItemDeletado = foodItemService.deletar(id);
+        if (foodItemDeletado != null) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Food: " + foodItemDeletado.getNome() + " deletado com sucesso.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Food ID: " + id + " nao existe.");
+        }
+    }
+}

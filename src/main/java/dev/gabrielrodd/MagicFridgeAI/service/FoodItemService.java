@@ -39,4 +39,10 @@ public class FoodItemService {
             return null;
         }
     }
+
+    public FoodItemModel deletar(Long id) {
+        Optional<FoodItemModel> foodItemDelete = foodItemRepository.findById(id);
+        foodItemRepository.deleteById(id);
+        return foodItemDelete.orElse(null);
+    }
 }
