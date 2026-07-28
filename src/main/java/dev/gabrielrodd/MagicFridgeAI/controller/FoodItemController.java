@@ -56,7 +56,7 @@ public class FoodItemController {
     public ResponseEntity<String> editar(@RequestBody FoodItemModel foodItem, @PathVariable Long id) {
         FoodItemModel foodItemEditado = foodItemService.editar(foodItem, id);
         if (foodItemEditado != null) {
-            return ResponseEntity.status(HttpStatus.CREATED)
+            return ResponseEntity.status(HttpStatus.OK)
                     .body("Food: " + foodItemEditado.getNome() + " editado com sucesso.");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
