@@ -25,6 +25,8 @@ public class FoodItemModel {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
+    private String descricao;
+
     public Long getId() {
         return id;
     }
@@ -39,6 +41,14 @@ public class FoodItemModel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Integer getQuantidade() {
